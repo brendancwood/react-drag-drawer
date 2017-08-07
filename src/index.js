@@ -132,13 +132,13 @@ class Drawer extends Component {
     // only attach listeners once as this function gets called every re-render
     if (this.props.disableDrag || this.state.listenersAttached) return
 
-    this.state.parentElement.addEventListener('touchmove', this.preventDefault)
-    this.state.parentElement.addEventListener('scroll', this.preventDefault)
-    this.state.parentElement.addEventListener('mousewheel', this.preventDefault)
+    const container = this.state.parentElement
+
+    container.addEventListener('touchmove', this.preventDefault)
+    container.addEventListener('scroll', this.preventDefault)
+    container.addEventListener('mousewheel', this.preventDefault)
 
     if (!this.drawer) return
-
-    const container = this.state.parentElement
 
     container.addEventListener('touchend', this.onTouchEnd)
     container.addEventListener('touchmove', this.onTouchMove)
